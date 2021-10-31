@@ -4,15 +4,45 @@
 <meta name = "viewport" content = "with=device-width, initial - scale = 1.0">
 <title>Taxes Without Border</title>
 <link rel ="stylesheet" href = "website.css">
+<script src = "website.js"></script>
 </head>
 
 <body>
+
 <section class = "header">
 <div class = "text-box">
 <h1>State</h1>
 <p>
 Enter the state where you bought the product from.
 </p>
+<form>
+<input type = "text" id = "statename" name = "statename" required > 
+<button id = "submit"> Submit </button>
+<span role = "alert" id = "stateError" aria-hidden = "true"> Please enter the State abbreviation in uppercase.
+</span>
+</form>
+</section>
+
+<section class = "product">
+<h1>Product </h1>
+<p>Enter the product type. </p>
+<form>
+<input type = "text" id = "productname" name = "productname" required>
+<button id = "submit"> Submit </button>
+</form>
+</section>
+
+<section class = "product-price">
+<h1> Product Price </h1>
+<p> Enter the product price. </p>
+<form>
+<input type = "number" id = "priceval" name = "priceval" required>
+<button id = "submit"> Submit </button>
+</form>
+</section>
+
+<section class = "final-price">
+<h1>Final Price </h1>
 
 </section>
 
