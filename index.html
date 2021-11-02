@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name = "viewport" content = "with=device-width, initial - scale = 1.0">
+<title>Taxes Without Border</title>
+<link rel ="stylesheet" href = "style.css">
+
+</head>
+
+<body>
+<script src = "main.js"></script>
+<section class = "header">
+<div class = "text-box">
+<h1>State</h1>
+<p>
+Enter the state where you bought the product from.
+</p>
+<form id = "frm1">
+<input type = "text" id = "statename"  > 
+
+</form>
+<br>
+<p id = "stateValid"> </p> 
+</section>
+
+<section class = "product">
+<h1>Product </h1>
+<p>Select the product type. </p>
+<form>
+<select id = "productSelect">
+<option> Retail  </option>
+<option> Medical Marijuana </option>
+<option> Recreational Marijuana </option>
+</select>
+
+</form>
+
+</section>
+
+<section class = "product-price">
+<h1> Product Price </h1>
+<p> Enter the product price. </p>
+<form>
+<input type = "number" id = "priceval"  required>
+</form>
+<br>
+
+<button name = "button" value = "Ok" type = "button" onclick = "validState();priceType();">Submit</button>
+</section>
+
+<section class = "final-price">
+
+<h1>Final Price </h1>
+<p id = "demo"> </p>
+</section>
+
+
+
+</body>
+
+</html>
