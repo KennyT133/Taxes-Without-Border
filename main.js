@@ -1,18 +1,24 @@
+var finalPriceAdd = 0;
+var holdFinal = 0;
 function priceType()
 {
   var productType = document.getElementById("productSelect").value;
   if(productType == "Retail")
   {
     finalPriceRetail();
+  
   }
   else if(productType ==  "Medical Marijuana")
   {
     finalPriceMedical();
+ 
   }
   else if(productType == "Recreational Marijuana"){
     finalPriceRec();
+    
   }
 }
+
 function validState()
 {
   const stateArray = ["AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
@@ -64,7 +70,9 @@ function finalPriceRetail()
       x = price * retailTax[i];
       finalPrice = Math.round(x*100)/100;
       returnPrice += finalPrice;
+      
     document.getElementById("demo").innerHTML=returnPrice;
+    finalPriceAdd = returnPrice;
     }
     
   }
@@ -104,11 +112,13 @@ function finalPriceMedical()
       returnPrice += finalPrice;
       legal = true;
     document.getElementById("demo").innerHTML=returnPrice;
+     finalPriceAdd = returnPrice;
     }
   }
   if(legal == false)
   {
     document.getElementById("demo").innerHTML="It is illegal in this state.";
+     finalPriceAdd = 0;
   }
 }
 }
@@ -147,11 +157,31 @@ function finalPriceRec()
       returnPrice += finalPrice;
       legal = true;
     document.getElementById("demo").innerHTML=returnPrice;
+    finalPriceAdd = returnPrice;
     }
   }
   if(legal == false)
   {
+    
     document.getElementById("demo").innerHTML="It is illegal in this state.";
+    finalPriceAdd = 0;
   }
 }
+}
+
+function addPrices()
+{
+
+  var priceAdd = holdFinal + finalPriceAdd;
+  priceAdd = Math.round(priceAdd*100)/100;
+  
+  if(priceAdd == 0)
+  {
+    document.getElementById("addPrices").innerHTML= "No products have been entered."
+    holdFinal = priceAdd;
+  }
+  else{
+    document.getElementById("addPrices").innerHTML= priceAdd;
+    holdFinal = priceAdd;
+  }
 }
