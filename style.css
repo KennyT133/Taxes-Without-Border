@@ -56,3 +56,13 @@ body{
   text-align: center;
 }
 
+.add-final
+{
+  width: 90%;
+  color: #fff;
+  position:absolute;
+  top: 80%;
+  left: 75%;
+  transform: translate(-80%,-80%);
+  text-align: center;
+}
