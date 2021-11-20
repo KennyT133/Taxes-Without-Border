@@ -4,11 +4,13 @@
 <meta name = "viewport" content = "with=device-width, initial - scale = 1.0">
 <title>Taxes Without Border</title>
 <link rel ="stylesheet" href = "style.css">
+<script src = "jquery-csv.js"></script>
+<script src = "main.js"></script>
 
 </head>
 
 <body>
-<script src = "main.js"></script>
+
 <section class = "header">
 <div class = "text-box">
 <h1>State</h1>
@@ -52,8 +54,14 @@ Enter the state where you bought the product from.
 
 <h1>Final Price </h1>
 <p id = "demo"> </p>
+
 </section>
 
+<section class = "add-final"> 
+<h1>Add Final Price </h1>
+<button name = "button" value = "Ok" type = "button" onclick = "addPrices();">Yes</button>
+<p id = "addPrices"> </p>
+</section>
 
 
 </body>
