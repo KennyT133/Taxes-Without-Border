@@ -2,7 +2,7 @@ const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { promisify } = require('util');
-
+let globalName;
 const database = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
@@ -12,9 +12,9 @@ const database = mysql.createConnection({
 
 exports.register = (req, res) => {
     console.log(req.body);
-
+    const FinalTotalPrice = 0;
     const { name, email, password, passwordConfirm } = req.body;
-
+    globalName = req.body.name;
     database.query('SELECT email FROM users WHERE email = ?', [email], async (error, results) => {
         if (error) {
             console.log(error);
@@ -40,8 +40,8 @@ exports.register = (req, res) => {
 
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
-
-        database.query('INSERT INTO users SET ?', { name: name, email: email, password: hashedPassword }, (error, results) => {
+        
+        database.query('INSERT INTO users SET ?', { name: name, email: email, password: hashedPassword, FinalTotalPrice:FinalTotalPrice }, (error, results) => {
             if (error) {
                 console.log(error);
             } else {
@@ -122,7 +122,18 @@ exports.isLoggedIn = async (req, res, next) => {
         next();
     }
 }
-
+exports.save = async (req,res) =>{
+    const saveFinalPrice = req.body.saveFinalPrice;
+    
+    database.query("UPDATE users SET  ?  ", {FinalTotalPrice:saveFinalPrice},(error, results) =>{
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(results);
+            return res.redirect("/mainWeb");
+        }
+    } )
+}
 exports.logout = async (req, res) => {
     res.cookie('jwt', 'logout', {
         expires: new Date(Date.now + 2*1000),
